@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Catering admin - analytics.">
+  <title>Analytics | Stackly Catering Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="dash-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-crown"></i></div>
+        <div class="brand-text">
+          Stackly
+          <small>Admin Panel</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-tag">Manage</div>
+        <ul>
+          <li><a href="admindashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+          <li><a href="admin-bookings.html"><i class="fas fa-calendar-check"></i> Bookings <span class="nav-badge">12</span></a></li>
+          <li><a href="admin-users.html"><i class="fas fa-users"></i> Users</a></li>
+          <li><a href="admin-menu-catalog.html"><i class="fas fa-utensils"></i> Menu Catalog</a></li>
+          <li><a href="admin-packages.html"><i class="fas fa-tags"></i> Packages</a></li>
+        </ul>
+        <div class="nav-section-tag">Reports</div>
+        <ul>
+          <li><a href="admin-analytics.html" class="active admin"><i class="fas fa-chart-line"></i> Analytics</a></li>
+          <li><a href="admin-revenue.html"><i class="fas fa-file-invoice-dollar"></i> Revenue</a></li>
+          <li><a href="admin-reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+        </ul>
+        <div class="nav-section-tag">System</div>
+        <ul>
+          <li><a href="admin-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="admin-support.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <div class="dash-topbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="sidebar-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+          <div class="dash-greeting">
+            <h1>Analytics</h1>
+            <p>Business performance and booking insights.</p>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <div class="dash-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="dashSearch" placeholder="Search...">
+          </div>
+          <button class="dash-icon-btn notif-btn" aria-label="Notifications">
+            <i class="far fa-bell"></i>
+            <span class="notif-dot">5</span>
+          </button>
+          <a href="admin-settings.html" class="dash-top-avatar" title="Admin">AD</a>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="68">0</div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +15% YoY</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-users"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="1240">0</div>
+            <div class="stat-label">Registered Users</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +4% this month</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-utensils"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="45">0</div>
+            <div class="stat-label">Menu Items</div>
+            <div class="stat-trend">In catalog</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-star"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="4.8" data-suffix="">4.8</div>
+            <div class="stat-label">Avg. Rating</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> Great feedback</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-grid-2">
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Bookings by Service</h3>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut" data-value="45">
+              <span class="donut-value">45%</span>
+            </div>
+            <div class="donut-legend">
+              <div class="legend-item"><span class="legend-dot" style="background:var(--primary);"></span> Wedding 45%</div>
+              <div class="legend-item"><span class="legend-dot" style="background:#42a5f5;"></span> Corporate 25%</div>
+              <div class="legend-item"><span class="legend-dot" style="background:#4caf50;"></span> Birthday 20%</div>
+              <div class="legend-item"><span class="legend-dot" style="background:#ef5350;"></span> Social 10%</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Conversion</h3>
+          </div>
+          <div class="progress-list">
+            <div class="progress-item">
+              <div class="progress-head"><span class="progress-label">Lead â†’ Booking</span><span class="progress-pct" data-pct="62">62%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="62"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span class="progress-label">Booking â†’ Confirmed</span><span class="progress-pct" data-pct="78">78%</span></div>
+              <div class="progress-track"><div class="progress-fill green" data-width="78"></div></div>
+            </div>
+            <div class="progress-item">
+              <div class="progress-head"><span class="progress-label">Repeat Customers</span><span class="progress-pct" data-pct="44">44%</span></div>
+              <div class="progress-track"><div class="progress-fill blue" data-width="44"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

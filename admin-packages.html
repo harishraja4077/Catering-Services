@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Catering admin - manage packages.">
+  <title>Packages | Stackly Catering Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="dash-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-crown"></i></div>
+        <div class="brand-text">
+          Stackly
+          <small>Admin Panel</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-tag">Manage</div>
+        <ul>
+          <li><a href="admindashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+          <li><a href="admin-bookings.html"><i class="fas fa-calendar-check"></i> Bookings <span class="nav-badge">12</span></a></li>
+          <li><a href="admin-users.html"><i class="fas fa-users"></i> Users</a></li>
+          <li><a href="admin-menu-catalog.html"><i class="fas fa-utensils"></i> Menu Catalog</a></li>
+          <li><a href="admin-packages.html" class="active admin"><i class="fas fa-tags"></i> Packages</a></li>
+        </ul>
+        <div class="nav-section-tag">Reports</div>
+        <ul>
+          <li><a href="admin-analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+          <li><a href="admin-revenue.html"><i class="fas fa-file-invoice-dollar"></i> Revenue</a></li>
+          <li><a href="admin-reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+        </ul>
+        <div class="nav-section-tag">System</div>
+        <ul>
+          <li><a href="admin-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="admin-support.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <div class="dash-topbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="sidebar-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+          <div class="dash-greeting">
+            <h1>Packages</h1>
+            <p>Manage your catering packages and pricing.</p>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <div class="dash-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="dashSearch" placeholder="Search packages...">
+          </div>
+          <button class="dash-icon-btn notif-btn" aria-label="Notifications">
+            <i class="far fa-bell"></i>
+            <span class="notif-dot">5</span>
+          </button>
+          <a href="admin-settings.html" class="dash-top-avatar" title="Admin">AD</a>
+        </div>
+      </div>
+
+      <div class="admin-action-bar">
+        <button class="btn-sm primary" onclick="window.location.href='404.html'"><i class="fas fa-plus"></i> New Package</button>
+      </div>
+
+      <div class="dash-grid-2">
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Wedding Catering</h3>
+            <span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Active</span>
+          </div>
+          <div class="stat-num" style="font-size:1.8rem;">$10,000</div>
+          <p style="font-size:0.82rem;color:var(--gray);margin-top:0.5rem;">Full service â€” staff, setup, premium menu & bar. Up to 200 guests.</p>
+          <div class="activity-list" style="margin-top:0.5rem;">
+            <div class="activity-item"><span class="activity-dot gold"></span><div><div class="activity-content">32 bookings this month</div></div></div>
+            <div class="activity-item"><span class="activity-dot green"></span><div><div class="activity-content">$14,200 revenue</div></div></div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Corporate Events</h3>
+            <span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Active</span>
+          </div>
+          <div class="stat-num" style="font-size:1.8rem;">$4,000</div>
+          <p style="font-size:0.82rem;color:var(--gray);margin-top:0.5rem;">Business catering with buffet & plated options. Up to 120 guests.</p>
+          <div class="activity-list" style="margin-top:0.5rem;">
+            <div class="activity-item"><span class="activity-dot gold"></span><div><div class="activity-content">18 bookings this month</div></div></div>
+            <div class="activity-item"><span class="activity-dot green"></span><div><div class="activity-content">$8,450 revenue</div></div></div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Birthday Parties</h3>
+            <span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Active</span>
+          </div>
+          <div class="stat-num" style="font-size:1.8rem;">$1,500</div>
+          <p style="font-size:0.82rem;color:var(--gray);margin-top:0.5rem;">Fun, casual catering with dessert station. Up to 60 guests.</p>
+          <div class="activity-list" style="margin-top:0.5rem;">
+            <div class="activity-item"><span class="activity-dot gold"></span><div><div class="activity-content">14 bookings this month</div></div></div>
+            <div class="activity-item"><span class="activity-dot green"></span><div><div class="activity-content">$3,800 revenue</div></div></div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Social Gatherings</h3>
+            <span class="table-status" style="background:#fff3e0;color:#e65100;">Draft</span>
+          </div>
+          <div class="stat-num" style="font-size:1.8rem;">$800</div>
+          <p style="font-size:0.82rem;color:var(--gray);margin-top:0.5rem;">Casual gatherings, finger foods & beverages. Up to 40 guests.</p>
+          <div class="activity-list" style="margin-top:0.5rem;">
+            <div class="activity-item"><span class="activity-dot gold"></span><div><div class="activity-content">4 bookings this month</div></div></div>
+            <div class="activity-item"><span class="activity-dot green"></span><div><div class="activity-content">$2,000 revenue</div></div></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

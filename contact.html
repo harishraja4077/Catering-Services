@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Stackly Catering for consultations, quotes, and event inquiries.">
+  <title>Contact Us | Stackly Catering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== Navigation ===== -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="Assets/logo.webp" alt="Stackly" class="nav-brand-logo">
+      </a>
+      <div class="nav-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="signin.html" class="btn btn-primary nav-cta">Login</a></li>
+        </ul>
+      </div>
+      <button class="mobile-toggler" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== Section 1: Hero ===== -->
+  <section class="page-hero">
+    <img src="images/contact-hero.webp" alt="Contact Stackly Catering team" class="hero-bg">
+    <div class="page-hero-content container">
+      <span class="hero-eyebrow">Get in Touch</span>
+      <h1>Let's Plan Your <br>Perfect Event</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Contact</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 2: Contact Information ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Reach Us</span>
+        <h2 class="section-title">Contact Information</h2>
+        <p>We're here to help you plan the perfect catering experience. Reach out through any of our channels.</p>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <h4>Visit Our Office</h4>
+                <p>MMR Complex, Chinna Thirupathi<br>near Chinna Muniyappan Kovil, Salem, Tamil Nadu 636008</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-phone-alt"></i></div>
+              <div>
+                <h4>Call Us</h4>
+                <p>+91 70107 92745</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4>Email Us</h4>
+                <p>info@thestackly.com<br>thestackly@gmail.com</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+              <div>
+                <h4>Office Hours</h4>
+                <p>Mon - Fri: 9 AM - 7 PM<br>Sat - Sun: 10 AM - 5 PM</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-wrapper">
+          <div class="form-header">
+            <h3>Send Us a Message</h3>
+            <p>Fill in the form and we'll get back to you within 24 hours.</p>
+          </div>
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name<span>*</span></label>
+                <input type="text" id="name" class="form-control" placeholder="John Smith" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address<span>*</span></label>
+                <input type="email" id="email" class="form-control" placeholder="john@email.com" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number<span>*</span></label>
+                <input type="tel" id="phone" class="form-control" placeholder="+1 555 123 4567" required>
+              </div>
+              <div class="form-group">
+                <label for="eventType">Event Type<span>*</span></label>
+                <select id="eventType" class="form-control" required>
+                  <option value="">Select event type</option>
+                  <option value="wedding">Wedding</option>
+                  <option value="corporate">Corporate Event</option>
+                  <option value="birthday">Birthday Party</option>
+                  <option value="social">Social Gathering</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="eventDate">Event Date</label>
+              <input type="date" id="eventDate" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="guests">Guests</label>
+              <input type="number" id="guests" class="form-control" placeholder="Approximate number of guests" min="1">
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" class="form-control" placeholder="Tell us about your event and catering needs..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark btn-block">Send Message <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i></button>
+            <div class="form-error" id="formError"></div>
+            <div class="form-success" id="formSuccess">
+              <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We'll be in touch soon.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 3: Map ===== -->
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Find Us</span>
+        <h2 class="section-title">Our Location</h2>
+      </div>
+      <div class="map-wrapper">
+        <iframe src="https://maps.google.com/maps?q=MMR+Complex,+Chinna+Thirupathi,+near+Chinna+Muniyappan+Kovil,+Salem,+Tamil+Nadu+636008&z=15&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Stackly Catering location"></iframe>
+        <div class="map-overlay">
+          <h4>Stackly Catering HQ</h4>
+          <p>MMR Complex, Chinna Thirupathi<br>near Chinna Muniyappan Kovil, Salem<br>Tamil Nadu 636008</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=MMR+Complex%2C+Chinna+Thirupathi%2C+Salem%2C+Tamil+Nadu+636008" target="_blank" rel="noopener" style="color: var(--primary-dark); font-weight: 600; font-size: 0.9rem;">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 4: Whatsapp / Quick Connect ===== -->
+  <section class="section" style="background: var(--light-gray);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Quick Connect</span>
+        <h2 class="section-title">Prefer to Chat?</h2>
+        <p>Connect with us instantly through these platforms for fast responses.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fab fa-whatsapp"></i></div>
+          <h3>WhatsApp</h3>
+          <p>Chat with our team instantly at<br>+91 70107 92745</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fab fa-facebook-messenger"></i></div>
+          <h3>Messenger</h3>
+          <p>Message us on Facebook<br>@StacklyCatering</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fab fa-instagram"></i></div>
+          <h3>Instagram</h3>
+          <p>DM us at @stackly.catering<br>for quick inquiries</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h3>Live Support</h3>
+          <p>Office support available<br>Mon - Sun, 9 AM - 7 PM</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 5: FAQ ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Common Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p>Quick answers to the questions we receive most often from our clients.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item active">
+          <div class="faq-question">
+            How do I get a catering quote? <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Simply fill out our contact form, call us, or email us with your event details including date, number of guests, and type of event. We'll provide a detailed quote within 24 hours.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Is there a tasting session available? <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! We offer tasting sessions for our Gold and Platinum packages. You can sample selected menu items before making your final decision.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What is your cancellation policy? <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>We have a flexible cancellation policy. You can cancel or reschedule your event up to 7 days before the event date for a full refund of your deposit.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Do you offer delivery and setup? <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>Absolutely! All packages include professional delivery, setup, and cleanup services. Our team will handle all the logistics so you can focus on enjoying your event.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 6: About quick ===== -->
+  <section class="section" style="background: var(--light-gray);">
+    <div class="container">
+      <div class="about-grid" style="grid-template-columns: 1fr 1fr; align-items: center;">
+        <div class="about-media">
+          <img src="images/contact-info.webp" alt="Our friendly team at work">
+        </div>
+        <div class="about-content">
+          <span class="section-subtitle">Why Contact Us?</span>
+          <h2>Dedicated to Your Event Success</h2>
+          <p>Our team is passionate about making every event special. When you contact Stackly Catering, you're not just getting a vendor — you're gaining a dedicated partner who cares about your celebration.</p>
+          <div class="about-stats-mini">
+            <div class="mini-stat">
+              <div class="mini-num">24hr</div>
+              <div class="mini-label">Response Time</div>
+            </div>
+            <div class="mini-stat">
+              <div class="mini-num">100%</div>
+              <div class="mini-label">Commitment</div>
+            </div>
+            <div class="mini-stat">
+              <div class="mini-num">15+</div>
+              <div class="mini-label">Years</div>
+            </div>
+          </div>
+          <a href="404.html" class="btn btn-outline">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 7: Social / Follow ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Stay Connected</span>
+        <h2 class="section-title">Follow Our Culinary Journey</h2>
+        <p>Join our community for daily inspiration, behind-the-scenes moments, and exclusive offers.</p>
+      </div>
+      <div class="features-grid">
+        <a href="404.html" class="feature-card" style="text-decoration: none;">
+          <div class="feature-icon"><i class="fab fa-instagram"></i></div>
+          <h3>@stackly.catering</h3>
+          <p>Follow us on Instagram for daily food inspiration and event highlights.</p>
+        </a>
+        <a href="404.html" class="feature-card" style="text-decoration: none;">
+          <div class="feature-icon"><i class="fab fa-facebook-f"></i></div>
+          <h3>Stackly Catering</h3>
+          <p>Like our page for updates, photo galleries, and client stories.</p>
+        </a>
+        <a href="404.html" class="feature-card" style="text-decoration: none;">
+          <div class="feature-icon"><i class="fab fa-youtube"></i></div>
+          <h3>Stackly Kitchen</h3>
+          <p>Subscribe to our channel for cooking tutorials and event showcases.</p>
+        </a>
+        <a href="404.html" class="feature-card" style="text-decoration: none;">
+          <div class="feature-icon"><i class="fab fa-linkedin-in"></i></div>
+          <h3>Stackly Catering</h3>
+          <p>Connect for corporate catering solutions and business partnerships.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Section 8: CTA ===== -->
+  <section class="cta">
+    <img src="images/contact-cta.webp" alt="Elegant catering table setting" class="cta-bg">
+    <div class="container">
+      <h2>Ready to Book Your Event?</h2>
+      <p>Don't wait — our calendar fills up fast, especially during peak season. Reach out today to secure your date.</p>
+      <a href="tel:+917010792745" class="btn btn-light">Call +91 70107 92745</a>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a href="index.html" class="footer-logo">
+            <img src="Assets/logo.webp" alt="Stackly" class="nav-brand-logo">
+          </a>
+          <p>Crafting unforgettable culinary experiences for life's most precious moments since 2011.</p>
+          <div class="footer-social">
+            <a href="404.html" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="404.html" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="404.html" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="404.html" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="404.html">Wedding</a></li>
+            <li><a href="404.html">Corporate</a></li>
+            <li><a href="404.html">Birthday</a></li>
+            <li><a href="404.html">Social</a></li>
+            <li><a href="404.html">Custom Menu</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i><span>MMR Complex, Chinna Thirupathi<br>near Chinna Muniyappan Kovil, Salem,<br>Tamil Nadu 636008</span></li>
+            <li><i class="fas fa-envelope"></i><span><a href="404.html">info@thestackly.com</a><br><a href="404.html">thestackly@gmail.com</a></span></li>
+            <li><i class="fas fa-phone-alt"></i><span><a href="404.html">+91 70107 92745</a></span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Stackly Catering. All rights reserved. Crafted with <i class="fas fa-heart" style="color: var(--primary);"></i></p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

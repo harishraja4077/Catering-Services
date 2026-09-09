@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Catering - your invoices and payments.">
+  <title>Invoices | Stackly Catering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="dash-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-utensils"></i></div>
+        <div class="brand-text">
+          Stackly
+          <small>User Panel</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-tag">Main</div>
+        <ul>
+          <li><a href="userdashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+          <li><a href="bookings.html"><i class="fas fa-calendar-alt"></i> My Bookings</a></li>
+          <li><a href="invoices.html" class="active"><i class="fas fa-file-invoice-dollar"></i> Invoices</a></li>
+          <li><a href="menu-catalog.html"><i class="fas fa-utensils"></i> Menu Catalog <span class="nav-badge">New</span></a></li>
+        </ul>
+        <div class="nav-section-tag">Account</div>
+        <ul>
+          <li><a href="profile.html"><i class="fas fa-user-circle"></i> My Profile</a></li>
+          <li><a href="favorites.html"><i class="fas fa-star"></i> Favorites</a></li>
+          <li><a href="support.html"><i class="fas fa-headset"></i> Support</a></li>
+          <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar">JS</div>
+          <div class="user-info">
+            <div class="user-name">John Smith</div>
+            <div class="user-role">Gold Member</div>
+          </div>
+        </div>
+        <button class="logout-btn sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <div class="dash-topbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="sidebar-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+          <div class="dash-greeting">
+            <h1>Invoices</h1>
+            <p>Review your invoices and payment history.</p>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <div class="dash-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="dashSearch" placeholder="Search invoices...">
+          </div>
+          <button class="dash-icon-btn notif-btn" aria-label="Notifications">
+            <i class="far fa-bell"></i>
+            <span class="notif-dot">3</span>
+          </button>
+          <a href="profile.html" class="dash-top-avatar" title="Profile">JS</a>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold"><i class="fas fa-file-invoice"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="6">0</div>
+            <div class="stat-label">Total Invoices</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> All time</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="5">0</div>
+            <div class="stat-label">Paid</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> Settled</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-exclamation-circle"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="1">0</div>
+            <div class="stat-label">Outstanding</div>
+            <div class="stat-trend down"><i class="fas fa-arrow-down"></i> Due soon</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-wallet"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="2450" data-suffix="$">0$</div>
+            <div class="stat-label">Total Spent</div>
+            <div class="stat-trend">Lifetime</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="card-header">
+          <h3>Invoice History</h3>
+          <a href="404.html" class="btn btn-outline" style="padding:0.5rem 1rem;font-size:0.8rem;"><i class="fas fa-download"></i> Download All</a>
+        </div>
+        <div class="table-responsive">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Invoice</th>
+                <th>Booking</th>
+                <th>Issued</th>
+                <th>Due Date</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>#INV-2041</strong></td>
+                <td>Wedding Anniversary</td>
+                <td>Sep 20, 2026</td>
+                <td>Oct 05, 2026</td>
+                <td>$6,750</td>
+                <td><span class="table-status" style="background:#fff3e0;color:#e65100;">Due Soon</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                  <button class="action-btn" title="Download"><i class="fas fa-download"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#INV-2036</strong></td>
+                <td>Corporate Gala Dinner</td>
+                <td>Jul 22, 2026</td>
+                <td>Aug 05, 2026</td>
+                <td>$3,600</td>
+                <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Paid</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                  <button class="action-btn" title="Download"><i class="fas fa-download"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#INV-2021</strong></td>
+                <td>Birthday Party</td>
+                <td>Jul 22, 2026</td>
+                <td>Aug 05, 2026</td>
+                <td>$1,800</td>
+                <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Paid</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                  <button class="action-btn" title="Download"><i class="fas fa-download"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>#INV-1988</strong></td>
+                <td>Family Thanksgiving</td>
+                <td>Nov 18, 2025</td>
+                <td>Dec 02, 2025</td>
+                <td>$1,200</td>
+                <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Paid</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                  <button class="action-btn" title="Download"><i class="fas fa-download"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

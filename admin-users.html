@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Catering admin - manage users.">
+  <title>Users | Stackly Catering Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="dash-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-crown"></i></div>
+        <div class="brand-text">
+          Stackly
+          <small>Admin Panel</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-tag">Manage</div>
+        <ul>
+          <li><a href="admindashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+          <li><a href="admin-bookings.html"><i class="fas fa-calendar-check"></i> Bookings <span class="nav-badge">12</span></a></li>
+          <li><a href="admin-users.html" class="active admin"><i class="fas fa-users"></i> Users</a></li>
+          <li><a href="admin-menu-catalog.html"><i class="fas fa-utensils"></i> Menu Catalog</a></li>
+          <li><a href="admin-packages.html"><i class="fas fa-tags"></i> Packages</a></li>
+        </ul>
+        <div class="nav-section-tag">Reports</div>
+        <ul>
+          <li><a href="admin-analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+          <li><a href="admin-revenue.html"><i class="fas fa-file-invoice-dollar"></i> Revenue</a></li>
+          <li><a href="admin-reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+        </ul>
+        <div class="nav-section-tag">System</div>
+        <ul>
+          <li><a href="admin-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="admin-support.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <div class="dash-topbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="sidebar-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+          <div class="dash-greeting">
+            <h1>Users</h1>
+            <p>Manage registered customers and their roles.</p>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <div class="dash-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="dashSearch" placeholder="Search users...">
+          </div>
+          <button class="dash-icon-btn notif-btn" aria-label="Notifications">
+            <i class="far fa-bell"></i>
+            <span class="notif-dot">5</span>
+          </button>
+          <a href="admin-settings.html" class="dash-top-avatar" title="Admin">AD</a>
+        </div>
+      </div>
+
+      <div class="admin-action-bar">
+        <button class="btn-sm primary" onclick="window.location.href='404.html'"><i class="fas fa-user-plus"></i> Add User</button>
+        <button class="btn-sm" onclick="window.location.href='404.html'"><i class="fas fa-file-export"></i> Export</button>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold"><i class="fas fa-users"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="1240">0</div>
+            <div class="stat-label">Registered Users</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +45 this month</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-user-check"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="1185">0</div>
+            <div class="stat-label">Active Users</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> Engaged</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-user-tag"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="8">0</div>
+            <div class="stat-label">Admins</div>
+            <div class="stat-trend">Staff accounts</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-user-slash"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="23">0</div>
+            <div class="stat-label">Banned</div>
+            <div class="stat-trend">Restricted</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="card-header">
+          <h3>All Users</h3>
+          <button class="card-link">Filter <i class="fas fa-chevron-down"></i></button>
+        </div>
+        <div class="table-responsive">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Joined</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="avatar">EP</div>
+                    <span>Emily Parker</span>
+                  </div>
+                </td>
+                <td>emily@mail.com</td>
+                <td>User</td>
+                <td>Sep 6</td>
+                <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Active</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                  <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="avatar">MK</div>
+                    <span>Michael Kim</span>
+                  </div>
+                </td>
+                <td>michael@mail.com</td>
+                <td>User</td>
+                <td>Sep 5</td>
+                <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Active</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                  <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="avatar">AW</div>
+                    <span>Alice Wong</span>
+                  </div>
+                </td>
+                <td>alice@mail.com</td>
+                <td>Admin</td>
+                <td>Sep 3</td>
+                <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Active</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                  <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="table-user">
+                    <div class="avatar">JB</div>
+                    <span>James Brown</span>
+                  </div>
+                </td>
+                <td>james@mail.com</td>
+                <td>User</td>
+                <td>Sep 1</td>
+                <td><span class="table-status" style="background:#fde8e8;color:#c62828;">Banned</span></td>
+                <td class="table-actions">
+                  <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

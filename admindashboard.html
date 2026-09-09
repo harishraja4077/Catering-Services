@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Catering admin dashboard - manage bookings, users, revenue, and reports.">
+  <title>Admin Dashboard | Stackly Catering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-wrapper">
+    <!-- ===== Sidebar Overlay (mobile) ===== -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- ===== Sidebar (Admin) ===== -->
+    <aside class="dash-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-crown"></i></div>
+        <div class="brand-text">
+          Stackly
+          <small>Admin Panel</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-tag">Manage</div>
+        <ul>
+          <li><a href="admindashboard.html" class="active admin"><i class="fas fa-th-large"></i> Dashboard</a></li>
+          <li><a href="admin-bookings.html"><i class="fas fa-calendar-check"></i> Bookings <span class="nav-badge">12</span></a></li>
+          <li><a href="admin-users.html"><i class="fas fa-users"></i> Users</a></li>
+          <li><a href="admin-menu-catalog.html"><i class="fas fa-utensils"></i> Menu Catalog</a></li>
+          <li><a href="admin-packages.html"><i class="fas fa-tags"></i> Packages</a></li>
+        </ul>
+        <div class="nav-section-tag">Reports</div>
+        <ul>
+          <li><a href="admin-analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+          <li><a href="admin-revenue.html"><i class="fas fa-file-invoice-dollar"></i> Revenue</a></li>
+          <li><a href="admin-reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+        </ul>
+        <div class="nav-section-tag">System</div>
+        <ul>
+          <li><a href="admin-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="admin-support.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <!-- ===== Main Content ===== -->
+    <main class="dash-main">
+      <!-- Topbar -->
+      <div class="dash-topbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="sidebar-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+          <div class="dash-greeting">
+            <h1>Admin Overview</h1>
+            <p>Tuesday, September 8, 2026 Â· Monitor your catering business.</p>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <div class="dash-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="dashSearch" placeholder="Search bookings...">
+          </div>
+          <button class="dash-icon-btn notif-btn" aria-label="Notifications">
+            <i class="far fa-bell"></i>
+            <span class="notif-dot">5</span>
+          </button>
+          <a href="index.html" class="dash-top-avatar" title="Admin">AD</a>
+        </div>
+      </div>
+
+      <!-- Admin Action Bar -->
+      <div class="admin-action-bar">
+        <button class="btn-sm primary" onclick="window.location.href='404.html'"><i class="fas fa-plus"></i> New Booking</button>
+        <button class="btn-sm" onclick="window.location.href='404.html'"><i class="fas fa-file-export"></i> Export</button>
+        <button class="btn-sm" onclick="window.location.href='404.html'"><i class="fas fa-file-invoice-dollar"></i> Generate Invoice</button>
+        <button class="btn-sm" onclick="window.location.href='404.html'"><i class="fas fa-clipboard-list"></i> Reports</button>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold"><i class="fas fa-wallet"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="28450" data-suffix="$">0$</div>
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +12% this month</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="68">0</div>
+            <div class="stat-label">Total Bookings</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +8 this month</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue"><i class="fas fa-users"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="1240">0</div>
+            <div class="stat-label">Registered Users</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +45 this month</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-star"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="4.8" data-suffix="">4.8</div>
+            <div class="stat-label">Avg. Rating</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> Great feedback</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Revenue Chart + Donut -->
+      <div class="dash-grid-2">
+        <!-- Revenue Bar Chart -->
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Monthly Revenue</h3>
+            <button class="card-link">Last 6 Months <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="chart-bars">
+            <div class="chart-bar-col">
+              <div class="bar" data-height="40">
+                <span class="bar-value">$4.2K</span>
+              </div>
+              <span class="bar-label">Apr</span>
+            </div>
+            <div class="chart-bar-col">
+              <div class="bar" data-height="55">
+                <span class="bar-value">$6.8K</span>
+              </div>
+              <span class="bar-label">May</span>
+            </div>
+            <div class="chart-bar-col">
+              <div class="bar" data-height="48">
+                <span class="bar-value">$5.5K</span>
+              </div>
+              <span class="bar-label">Jun</span>
+            </div>
+            <div class="chart-bar-col">
+              <div class="bar" data-height="70">
+                <span class="bar-value">$8.3K</span>
+              </div>
+              <span class="bar-label">Jul</span>
+            </div>
+            <div class="chart-bar-col">
+              <div class="bar" data-height="62">
+                <span class="bar-value">$7.6K</span>
+              </div>
+              <span class="bar-label">Aug</span>
+            </div>
+            <div class="chart-bar-col">
+              <div class="bar" data-height="85">
+                <span class="bar-value">$9.8K</span>
+              </div>
+              <span class="bar-label">Sep</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Service Distribution Donut -->
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Bookings by Service</h3>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut" data-value="45">
+              <span class="donut-value">45%</span>
+            </div>
+            <div class="donut-legend">
+              <div class="legend-item">
+                <span class="legend-dot" style="background:var(--primary);"></span>
+                Wedding 45%
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot" style="background:#42a5f5;"></span>
+                Corporate 25%
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot" style="background:#4caf50;"></span>
+                Birthday 20%
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot" style="background:#ef5350;"></span>
+                Social 10%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bookings Table + Recent Activity -->
+      <div class="dash-grid-2">
+        <!-- Recent Bookings Table -->
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Recent Bookings</h3>
+            <button class="card-link" onclick="window.location.href='404.html'">View All</button>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Service</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">SM</div>
+                      <span>Sarah Miller</span>
+                    </div>
+                  </td>
+                  <td>Wedding</td>
+                  <td>Sep 20</td>
+                  <td><span class="table-status" style="background:#fff3e0;color:#e65100;">Pending</span></td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                    <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">JD</div>
+                      <span>James Davis</span>
+                    </div>
+                  </td>
+                  <td>Corporate</td>
+                  <td>Oct 05</td>
+                  <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Confirmed</span></td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                    <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">EP</div>
+                      <span>Emily Parker</span>
+                    </div>
+                  </td>
+                  <td>Birthday</td>
+                  <td>Oct 19</td>
+                  <td><span class="table-status" style="background:#e3f4e8;color:#2e7d32;">Confirmed</span></td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                    <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">RT</div>
+                      <span>Rachel Thompson</span>
+                    </div>
+                  </td>
+                  <td>Social</td>
+                  <td>Nov 02</td>
+                  <td><span class="table-status" style="background:#fde8e8;color:#c62828;">Cancelled</span></td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="View"><i class="far fa-eye"></i></button>
+                    <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Recent Activity</h3>
+            <button class="card-link" onclick="window.location.href='404.html'">All Logs</button>
+          </div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <span class="activity-dot gold"></span>
+              <div>
+                <div class="activity-content"><strong>New booking</strong> from Sarah Miller (Wedding).</div>
+                <div class="activity-time">25 minutes ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-dot green"></span>
+              <div>
+                <div class="activity-content"><strong>Payment confirmed</strong> for James Davis â€” $3,600.</div>
+                <div class="activity-time">1 hour ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-dot blue"></span>
+              <div>
+                <div class="activity-content">New user <strong>Emily Parker</strong> registered.</div>
+                <div class="activity-time">3 hours ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-dot red"></span>
+              <div>
+                <div class="activity-content">Booking <strong>cancelled</strong> by Rachel Thompson.</div>
+                <div class="activity-time">yesterday</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <span class="activity-dot green"></span>
+              <div>
+                <div class="activity-content"><strong>4.9 rating</strong> received for Wedding package.</div>
+                <div class="activity-time">yesterday</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Bookings Summary + Users Table -->
+      <div class="dash-grid-2-2">
+        <!-- Top Services -->
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Top Performing Services</h3>
+          </div>
+          <div class="booking-summary-list">
+            <div class="booking-item">
+              <div class="booking-type" style="background:#fde8f3;color:#a0205e;"><i class="fas fa-ring"></i></div>
+              <div class="booking-info">
+                <h4>Wedding Catering</h4>
+                <p>32 bookings this month</p>
+              </div>
+              <div class="booking-amount">$14,200</div>
+            </div>
+            <div class="booking-item">
+              <div class="booking-type" style="background:#e3f0fb;color:#1565c0;"><i class="fas fa-briefcase"></i></div>
+              <div class="booking-info">
+                <h4>Corporate Events</h4>
+                <p>18 bookings this month</p>
+              </div>
+              <div class="booking-amount">$8,450</div>
+            </div>
+            <div class="booking-item">
+              <div class="booking-type" style="background:#e3f4e8;color:#2e7d32;"><i class="fas fa-birthday-cake"></i></div>
+              <div class="booking-info">
+                <h4>Birthday Parties</h4>
+                <p>14 bookings this month</p>
+              </div>
+              <div class="booking-amount">$3,800</div>
+            </div>
+            <div class="booking-item">
+              <div class="booking-type" style="background:#fff3e0;color:#e65100;"><i class="fas fa-users"></i></div>
+              <div class="booking-info">
+                <h4>Social Gatherings</h4>
+                <p>4 bookings this month</p>
+              </div>
+              <div class="booking-amount">$2,000</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newest Users -->
+        <div class="dash-card">
+          <div class="card-header">
+            <h3>Newest Users</h3>
+            <button class="card-link" onclick="window.location.href='404.html'">View All</button>
+          </div>
+          <div class="table-responsive">
+            <table class="dash-table" style="min-width:420px;">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Joined</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">EP</div>
+                      <span>Emily Parker</span>
+                    </div>
+                  </td>
+                  <td>User</td>
+                  <td>Sep 6</td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="Ban" style="color:#c62828;"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">MK</div>
+                      <span>Michael Kim</span>
+                    </div>
+                  </td>
+                  <td>User</td>
+                  <td>Sep 5</td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="Ban" style="color:#c62828;"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">AW</div>
+                      <span>Alice Wong</span>
+                    </div>
+                  </td>
+                  <td>Admin</td>
+                  <td>Sep 3</td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="Ban" style="color:#c62828;"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="table-user">
+                      <div class="avatar">JB</div>
+                      <span>James Brown</span>
+                    </div>
+                  </td>
+                  <td>User</td>
+                  <td>Sep 1</td>
+                  <td class="table-actions">
+                    <button class="action-btn" title="Ban" style="color:#c62828;"><i class="fas fa-ban"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Catering admin - revenue reports.">
+  <title>Revenue | Stackly Catering Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <div class="dash-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="dash-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon"><i class="fas fa-crown"></i></div>
+        <div class="brand-text">
+          Stackly
+          <small>Admin Panel</small>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-tag">Manage</div>
+        <ul>
+          <li><a href="admindashboard.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+          <li><a href="admin-bookings.html"><i class="fas fa-calendar-check"></i> Bookings <span class="nav-badge">12</span></a></li>
+          <li><a href="admin-users.html"><i class="fas fa-users"></i> Users</a></li>
+          <li><a href="admin-menu-catalog.html"><i class="fas fa-utensils"></i> Menu Catalog</a></li>
+          <li><a href="admin-packages.html"><i class="fas fa-tags"></i> Packages</a></li>
+        </ul>
+        <div class="nav-section-tag">Reports</div>
+        <ul>
+          <li><a href="admin-analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+          <li><a href="admin-revenue.html" class="active admin"><i class="fas fa-file-invoice-dollar"></i> Revenue</a></li>
+          <li><a href="admin-reviews.html"><i class="fas fa-star"></i> Reviews</a></li>
+        </ul>
+        <div class="nav-section-tag">System</div>
+        <ul>
+          <li><a href="admin-settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+          <li><a href="admin-support.html"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin</div>
+            <div class="user-role">Super Admin</div>
+          </div>
+        </div>
+        <button class="logout-btn sidebar-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>
+      </div>
+    </aside>
+
+    <main class="dash-main">
+      <div class="dash-topbar">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <button class="sidebar-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+          <div class="dash-greeting">
+            <h1>Revenue</h1>
+            <p>Track earnings and financial performance.</p>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <div class="dash-search">
+            <i class="fas fa-search"></i>
+            <input type="text" id="dashSearch" placeholder="Search...">
+          </div>
+          <button class="dash-icon-btn notif-btn" aria-label="Notifications">
+            <i class="far fa-bell"></i>
+            <span class="notif-dot">5</span>
+          </button>
+          <a href="admin-settings.html" class="dash-top-avatar" title="Admin">AD</a>
+        </div>
+      </div>
+
+      <div class="admin-action-bar">
+        <button class="btn-sm primary" onclick="window.location.href='404.html'"><i class="fas fa-file-invoice-dollar"></i> Generate Invoice</button>
+        <button class="btn-sm" onclick="window.location.href='404.html'"><i class="fas fa-file-export"></i> Export Report</button>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold"><i class="fas fa-wallet"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="28450" data-suffix="$">0$</div>
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> +12% this month</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="24800" data-suffix="$">0$</div>
+            <div class="stat-label">Collected</div>
+            <div class="stat-trend up"><i class="fas fa-arrow-up"></i> Paid invoices</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red"><i class="fas fa-exclamation-circle"></i></div>
+          <div class="stat-info">
+            <div class="stat-num" data-target="3650" data-suffix="$">0$</div>
+            <div class="stat-label">Outstanding</div>
+            <div class="stat-trend down"><i class="fas fa-arrow-down"></i> Due</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-card">
+        <div class="card-header">
+          <h3>Monthly Revenue</h3>
+          <button class="card-link">Last 6 Months <i class="fas fa-chevron-down"></i></button>
+        </div>
+        <div class="chart-bars">
+          <div class="chart-bar-col">
+            <div class="bar" data-height="40"><span class="bar-value">$4.2K</span></div>
+            <span class="bar-label">Apr</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="bar" data-height="55"><span class="bar-value">$6.8K</span></div>
+            <span class="bar-label">May</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="bar" data-height="48"><span class="bar-value">$5.5K</span></div>
+            <span class="bar-label">Jun</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="bar" data-height="70"><span class="bar-value">$8.3K</span></div>
+            <span class="bar-label">Jul</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="bar" data-height="62"><span class="bar-value">$7.6K</span></div>
+            <span class="bar-label">Aug</span>
+          </div>
+          <div class="chart-bar-col">
+            <div class="bar" data-height="85"><span class="bar-value">$9.8K</span></div>
+            <span class="bar-label">Sep</span>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
