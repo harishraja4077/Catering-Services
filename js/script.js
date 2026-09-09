@@ -317,6 +317,20 @@ document.querySelectorAll(".auth-password-toggle").forEach(function (btn) {
   });
 });
 
+// ===== Password rules: min 8 chars, 1 uppercase, 1 number, 1 letter, 1 special =====
+function isValidPassword(pw) {
+  return (
+    pw.length >= 8 &&
+    /[A-Z]/.test(pw) &&
+    /[a-z]/.test(pw) &&
+    /[0-9]/.test(pw) &&
+    /[^A-Za-z0-9]/.test(pw)
+  );
+}
+
+const PASSWORD_REQUIREMENT_MSG =
+  '<i class="fas fa-exclamation-circle"></i> Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number, and a special character.';
+
 // ===== Sign Up: password strength meter =====
 const signupPassword = document.getElementById("signupPassword");
 const strengthBar = document.querySelector(".password-strength-bar");
@@ -375,7 +389,7 @@ if (signupForm) {
       return;
     }
 
-    if (pw.value !== confirm.value) {
+if (pw.value !== confirm.value) {
       if (errorMsg) {
         errorMsg.innerHTML = '<i class="fas fa-exclamation-circle"></i> Passwords do not match.';
         errorMsg.classList.add("show");
@@ -383,9 +397,9 @@ if (signupForm) {
       return;
     }
 
-    if (pw.value.length < 8) {
+    if (!isValidPassword(pw.value)) {
       if (errorMsg) {
-        errorMsg.innerHTML = '<i class="fas fa-exclamation-circle"></i> Password must be at least 8 characters.';
+        errorMsg.innerHTML = PASSWORD_REQUIREMENT_MSG;
         errorMsg.classList.add("show");
       }
       return;
@@ -439,12 +453,12 @@ if (signinForm) {
       return;
     }
 
-    if (password.value.length < 8) {
+    if (!isValidPassword(password.value)) {
       if (errorMsg) {
         errorMsg.style.background = "";
         errorMsg.style.color = "";
         errorMsg.style.borderColor = "";
-        errorMsg.innerHTML = '<i class="fas fa-exclamation-circle"></i> Password must be at least 8 characters.';
+        errorMsg.innerHTML = PASSWORD_REQUIREMENT_MSG;
         errorMsg.classList.add("show");
       }
       return;
