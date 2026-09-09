@@ -141,6 +141,11 @@ document.addEventListener("DOMContentLoaded", function () {
         row.style.display = text.includes(term) ? "" : "none";
       });
     });
+    dashSearch.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        window.location.href = "404.html";
+      }
+    });
   }
 
   // ===== Action button feedback (view/edit/delete) =====
@@ -222,5 +227,123 @@ document.addEventListener("DOMContentLoaded", function () {
       const pretty = first.charAt(0).toUpperCase() + first.slice(1);
       greet.textContent = greet.textContent.replace(/John/, pretty);
     }
+  }
+
+  // ===== Dashboard form validation -> redirect to 404 on valid submit =====
+  function validateDashboardForm(fields, errorId) {
+    const errorEl = document.getElementById(errorId);
+    let firstInvalid = null;
+    fields.forEach(function (field) {
+      const el = document.getElementById(field.id);
+      if (!el) return;
+      const val = el.value.trim();
+      let ok = true;
+      let message = null;
+      if (field.required && !val) {
+        ok = false;
+        message = field.emptyMsg || "Please fill in this field.";
+      } else if (field.regex && !field.regex.test(val)) {
+        ok = false;
+        message = field.invalidMsg || "Please enter a valid value.";
+      } else if (field.matches) {
+        const other = document.getElementById(field.matches);
+        if (!other || val !== other.value.trim()) {
+          ok = false;
+          message = field.matchMsg || "Values do not match.";
+        }
+      }
+      if (!ok && !firstInvalid) firstInvalid = message;
+      el.classList.toggle("error", !ok);
+    });
+    if (firstInvalid) {
+      errorEl.textContent = firstInvalid;
+      errorEl.classList.add("show");
+      return false;
+    }
+    errorEl.classList.remove("show");
+    window.location.href = "404.html";
+    return true;
+  }
+
+  function clearErrorsOnInput(ids, errorId) {
+    ids.forEach(function (id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener("input", function () {
+        el.classList.remove("error");
+        const errorEl = document.getElementById(errorId);
+        if (errorEl) errorEl.classList.remove("show");
+      });
+    });
+  }
+
+  // Edit Profile (profile.html)
+  const saveProfileBtn = document.getElementById("saveProfileBtn");
+  if (saveProfileBtn) {
+    const fields = [
+      { id: "editProfileName", required: true, emptyMsg: "Please fill in your full name." },
+      { id: "editProfileEmail", required: true, regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, emptyMsg: "Please fill in your email address.", invalidMsg: "Please enter a valid email address." },
+      { id: "editProfilePhone", required: true, emptyMsg: "Please fill in your phone number." },
+      { id: "editProfileLocation", required: true, emptyMsg: "Please fill in your location." },
+      { id: "editProfileAbout", required: true, emptyMsg: "Please write something about yourself." }
+    ];
+    saveProfileBtn.addEventListener("click", function () {
+      validateDashboardForm(fields, "editProfileError");
+    });
+    clearErrorsOnInput(fields.map(function (f) { return f.id; }), "editProfileError");
+  }
+
+  // Support ticket (support.html)
+  const submitTicketBtn = document.getElementById("submitTicketBtn");
+  if (submitTicketBtn) {
+    const fields = [
+      { id: "supportSubject", required: true, emptyMsg: "Please fill in the subject." },
+      { id: "supportMessage", required: true, emptyMsg: "Please write your message." }
+    ];
+    submitTicketBtn.addEventListener("click", function () {
+      validateDashboardForm(fields, "supportError");
+    });
+    clearErrorsOnInput(fields.map(function (f) { return f.id; }), "supportError");
+  }
+
+  // Change password (settings.html)
+  const updatePassBtn = document.getElementById("updatePassBtn");
+  if (updatePassBtn) {
+    const fields = [
+      { id: "settingsCurrentPass", required: true, emptyMsg: "Please enter your current password." },
+      { id: "settingsNewPass", required: true, emptyMsg: "Please enter a new password." },
+      { id: "settingsConfirmPass", required: true, matches: "settingsNewPass", emptyMsg: "Please confirm your new password.", matchMsg: "Passwords do not match." }
+    ];
+    updatePassBtn.addEventListener("click", function () {
+      validateDashboardForm(fields, "settingsPassError");
+    });
+    clearErrorsOnInput(fields.map(function (f) { return f.id; }), "settingsPassError");
+  }
+
+  // Save general settings (admin-settings.html)
+  const saveSettingsBtn = document.getElementById("saveSettingsBtn");
+  if (saveSettingsBtn) {
+    const fields = [
+      { id: "adminBizName", required: true, emptyMsg: "Please fill in the business name." },
+      { id: "adminBizEmail", required: true, regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, emptyMsg: "Please fill in the contact email.", invalidMsg: "Please enter a valid contact email." },
+      { id: "adminBizPhone", required: true, emptyMsg: "Please fill in the support phone number." }
+    ];
+    saveSettingsBtn.addEventListener("click", function () {
+      validateDashboardForm(fields, "adminSettingsError");
+    });
+    clearErrorsOnInput(fields.map(function (f) { return f.id; }), "adminSettingsError");
+  }
+
+  // Update password (admin-settings.html)
+  const adminUpdatePassBtn = document.getElementById("adminUpdatePassBtn");
+  if (adminUpdatePassBtn) {
+    const fields = [
+      { id: "adminCurrentPass", required: true, emptyMsg: "Please enter your current password." },
+      { id: "adminNewPass", required: true, emptyMsg: "Please enter a new password." }
+    ];
+    adminUpdatePassBtn.addEventListener("click", function () {
+      validateDashboardForm(fields, "adminPassError");
+    });
+    clearErrorsOnInput(fields.map(function (f) { return f.id; }), "adminPassError");
   }
 });

@@ -1704,6 +1704,10 @@ textarea.form-control {
   display: block;
 }
 
+.form-control.error {
+  border-color: #c62828;
+}
+
 .form-success {
   display: none;
   padding: 1.5rem;

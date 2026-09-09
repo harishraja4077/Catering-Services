@@ -19,11 +19,7 @@
 
     <aside class="dash-sidebar">
       <div class="sidebar-brand">
-        <div class="brand-icon"><i class="fas fa-utensils"></i></div>
-        <div class="brand-text">
-          Stackly
-          <small>User Panel</small>
-        </div>
+        <a href="index.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
       </div>
 
       <nav class="sidebar-nav">
@@ -73,7 +69,7 @@
             <i class="far fa-bell"></i>
             <span class="notif-dot">3</span>
           </button>
-          <a href="profile.html" class="dash-top-avatar" title="Profile">JS</a>
+          <a href="404.html" class="dash-top-avatar" title="Profile">JS</a>
         </div>
       </div>
 
@@ -113,17 +109,18 @@
           </div>
           <div class="form-group">
             <label>Current Password</label>
-            <input type="password" class="form-control" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+            <input type="password" id="settingsCurrentPass" class="form-control" placeholder="Enter current password">
           </div>
           <div class="form-group">
             <label>New Password</label>
-            <input type="password" class="form-control" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+            <input type="password" id="settingsNewPass" class="form-control" placeholder="Enter new password">
           </div>
           <div class="form-group">
             <label>Confirm New Password</label>
-            <input type="password" class="form-control" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+            <input type="password" id="settingsConfirmPass" class="form-control" placeholder="Confirm new password">
           </div>
-          <button class="btn btn-dark" style="margin-top:0.5rem;" onclick="window.location.href='404.html'"><i class="fas fa-key"></i> Update Password</button>
+          <div class="form-error" id="settingsPassError"></div>
+          <button class="btn btn-dark" style="margin-top:0.5rem;" id="updatePassBtn"><i class="fas fa-key"></i> Update Password</button>
         </div>
       </div>
     </main>

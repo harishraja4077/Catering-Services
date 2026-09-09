@@ -1,7 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // ===== Navbar scroll =====
+// ===== Navbar scroll =====
   const navbar = document.querySelector(".navbar");
   const scrollTopBtn = document.getElementById("scrollTop");
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 
   window.addEventListener("scroll", function () {
     if (window.scrollY > 100) {

@@ -19,11 +19,7 @@
 
     <aside class="dash-sidebar">
       <div class="sidebar-brand">
-        <div class="brand-icon"><i class="fas fa-crown"></i></div>
-        <div class="brand-text">
-          Stackly
-          <small>Admin Panel</small>
-        </div>
+        <a href="index.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
       </div>
 
       <nav class="sidebar-nav">
@@ -78,7 +74,7 @@
             <i class="far fa-bell"></i>
             <span class="notif-dot">5</span>
           </button>
-          <a href="admin-settings.html" class="dash-top-avatar" title="Admin">AD</a>
+          <a href="404.html" class="dash-top-avatar" title="Admin">AD</a>
         </div>
       </div>
 
@@ -89,17 +85,18 @@
           </div>
           <div class="form-group">
             <label>Business Name</label>
-            <input type="text" class="form-control" value="Stackly Catering">
+            <input type="text" id="adminBizName" class="form-control" value="Stackly Catering">
           </div>
           <div class="form-group">
             <label>Contact Email</label>
-            <input type="email" class="form-control" value="info@thestackly.com">
+            <input type="email" id="adminBizEmail" class="form-control" value="info@thestackly.com">
           </div>
           <div class="form-group">
             <label>Support Phone</label>
-            <input type="tel" class="form-control" value="+91 70107 92745">
+            <input type="tel" id="adminBizPhone" class="form-control" value="+91 70107 92745">
           </div>
-          <button class="btn btn-dark" style="margin-top:0.5rem;" onclick="window.location.href='404.html'"><i class="fas fa-save"></i> Save Settings</button>
+          <div class="form-error" id="adminSettingsError"></div>
+          <button class="btn btn-dark" style="margin-top:0.5rem;" id="saveSettingsBtn"><i class="fas fa-save"></i> Save Settings</button>
         </div>
 
         <div class="dash-card">
@@ -108,11 +105,11 @@
           </div>
           <div class="form-group">
             <label>Current Password</label>
-            <input type="password" class="form-control" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+            <input type="password" id="adminCurrentPass" class="form-control" placeholder="Enter current password">
           </div>
           <div class="form-group">
             <label>New Password</label>
-            <input type="password" class="form-control" placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢">
+            <input type="password" id="adminNewPass" class="form-control" placeholder="Enter new password">
           </div>
           <div class="activity-list" style="margin-top:0.5rem;">
             <div class="activity-item">
@@ -123,7 +120,8 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-outline" style="margin-top:0.5rem;" onclick="window.location.href='404.html'"><i class="fas fa-key"></i> Update Password</button>
+          <div class="form-error" id="adminPassError"></div>
+          <button class="btn btn-outline" style="margin-top:0.5rem;" id="adminUpdatePassBtn"><i class="fas fa-key"></i> Update Password</button>
         </div>
       </div>
     </main>
