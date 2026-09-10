@@ -19,7 +19,7 @@
 
     <aside class="dash-sidebar">
       <div class="sidebar-brand">
-        <a href="index.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
+        <a href="admindashboard.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
       </div>
 
       <nav class="sidebar-nav">
@@ -121,7 +121,15 @@
       <div class="dash-card">
         <div class="card-header">
           <h3>All Users</h3>
-          <button class="card-link">Filter <i class="fas fa-chevron-down"></i></button>
+          <div class="filter-dropdown" data-filter-target="#usersTableBody">
+            <button class="card-link filter-btn">Filter <i class="fas fa-chevron-down"></i></button>
+            <div class="filter-menu">
+              <button type="button" class="active">All Users</button>
+              <button type="button" data-filter-key="status" data-filter-value="Active">Active</button>
+              <button type="button" data-filter-key="status" data-filter-value="Banned">Banned</button>
+              <button type="button" data-filter-key="role" data-filter-value="Admin">Admins</button>
+            </div>
+          </div>
         </div>
         <div class="table-responsive">
           <table class="dash-table">
@@ -135,8 +143,8 @@
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
+            <tbody id="usersTableBody">
+              <tr data-role="User" data-status="Active">
                 <td>
                   <div class="table-user">
                     <div class="avatar">EP</div>
@@ -152,7 +160,7 @@
                   <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
                 </td>
               </tr>
-              <tr>
+              <tr data-role="User" data-status="Active">
                 <td>
                   <div class="table-user">
                     <div class="avatar">MK</div>
@@ -168,7 +176,7 @@
                   <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
                 </td>
               </tr>
-              <tr>
+              <tr data-role="Admin" data-status="Active">
                 <td>
                   <div class="table-user">
                     <div class="avatar">AW</div>
@@ -184,7 +192,7 @@
                   <button class="action-btn" title="Edit"><i class="fas fa-pen"></i></button>
                 </td>
               </tr>
-              <tr>
+              <tr data-role="User" data-status="Banned">
                 <td>
                   <div class="table-user">
                     <div class="avatar">JB</div>

@@ -19,7 +19,7 @@
 
     <aside class="dash-sidebar">
       <div class="sidebar-brand">
-        <a href="index.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
+        <a href="admindashboard.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
       </div>
 
       <nav class="sidebar-nav">
@@ -113,9 +113,19 @@
       <div class="dash-card">
         <div class="card-header">
           <h3>Monthly Revenue</h3>
-          <button class="card-link">Last 6 Months <i class="fas fa-chevron-down"></i></button>
+          <div class="period-dropdown" data-chart-target="#revenueChartBars">
+            <button class="card-link period-btn">Last 6 Months <i class="fas fa-chevron-down"></i></button>
+            <div class="period-menu">
+              <button type="button" data-period="Last 7 Days">Last 7 Days</button>
+              <button type="button" data-period="Last 30 Days">Last 30 Days</button>
+              <button type="button" data-period="Last 3 Months">Last 3 Months</button>
+              <button type="button" data-period="Last 6 Months" class="active">Last 6 Months</button>
+              <button type="button" data-period="Last 12 Months">Last 12 Months</button>
+              <button type="button" data-period="All Time">All Time</button>
+            </div>
+          </div>
         </div>
-        <div class="chart-bars">
+        <div class="chart-bars" id="revenueChartBars">
           <div class="chart-bar-col">
             <div class="bar" data-height="40"><span class="bar-value">$4.2K</span></div>
             <span class="bar-label">Apr</span>

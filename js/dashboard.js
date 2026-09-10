@@ -133,14 +133,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ===== Filter search input (tables) =====
   const dashSearch = document.getElementById("dashSearch");
-  if (dashSearch) {
-    dashSearch.addEventListener("input", function () {
-      const term = this.value.toLowerCase();
-      document.querySelectorAll(".dash-table tbody tr").forEach(function (row) {
-        const text = row.textContent.toLowerCase();
-        row.style.display = text.includes(term) ? "" : "none";
+
+  function applyFilters() {
+    const term = dashSearch ? (dashSearch.value || "").toLowerCase() : "";
+    document.querySelectorAll(".dash-table tbody tr").forEach(function (row) {
+      row.style.display = term && !row.textContent.toLowerCase().includes(term) ? "none" : "";
+    });
+    document.querySelectorAll(".filter-dropdown").forEach(function (fd) {
+      const target = document.querySelector(fd.dataset.filterTarget);
+      if (!target) return;
+      const itemSel = fd.getAttribute("data-filter-item") || "tr";
+      const filters = [];
+      fd.querySelectorAll(".filter-menu button.active").forEach(function (item) {
+        const key = item.getAttribute("data-filter-key");
+        const val = item.getAttribute("data-filter-value");
+        if (key && val) filters.push({ key: key, val: val });
+      });
+      Array.prototype.forEach.call(target.querySelectorAll(itemSel), function (row) {
+        let show = true;
+        filters.forEach(function (f) {
+          if ((row.getAttribute("data-" + f.key) || "").toLowerCase() !== f.val.toLowerCase()) {
+            show = false;
+          }
+        });
+        if (show && term && !row.textContent.toLowerCase().includes(term)) show = false;
+        row.style.display = show ? "" : "none";
       });
     });
+  }
+
+  if (dashSearch) {
+    dashSearch.addEventListener("input", applyFilters);
     dashSearch.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
         window.location.href = "404.html";
@@ -151,6 +174,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== Action button feedback (view/edit/delete) =====
   document.querySelectorAll(".action-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
+      const action = (this.getAttribute("title") || "").toLowerCase();
+      if (action === "view" || action === "edit") {
+        window.location.href = "404.html";
+        return;
+      }
       const original = this.innerHTML;
       this.innerHTML = '<i class="fas fa-check"></i>';
       this.style.color = "#2e7d32";
@@ -311,6 +339,170 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     clearErrorsOnInput(fields.map(function (f) { return f.id; }), "editProfileError");
   }
+
+  // ===== Period dropdown (Last 6 Months) =====
+  const PERIOD_CHART_DATA = {
+    "Last 7 Days": [
+      { label: "Mon", value: "$820", height: 28 },
+      { label: "Tue", value: "$1.1K", height: 36 },
+      { label: "Wed", value: "$950", height: 31 },
+      { label: "Thu", value: "$1.4K", height: 44 },
+      { label: "Fri", value: "$2.1K", height: 62 },
+      { label: "Sat", value: "$2.9K", height: 82 },
+      { label: "Sun", value: "$2.5K", height: 72 }
+    ],
+    "Last 30 Days": [
+      { label: "Week 1", value: "$5.2K", height: 42 },
+      { label: "Week 2", value: "$6.1K", height: 49 },
+      { label: "Week 3", value: "$7.4K", height: 58 },
+      { label: "Week 4", value: "$9.3K", height: 72 }
+    ],
+    "Last 3 Months": [
+      { label: "Jul", value: "$8.3K", height: 70 },
+      { label: "Aug", value: "$7.6K", height: 62 },
+      { label: "Sep", value: "$9.8K", height: 85 }
+    ],
+    "Last 6 Months": [
+      { label: "Apr", value: "$4.2K", height: 40 },
+      { label: "May", value: "$6.8K", height: 55 },
+      { label: "Jun", value: "$5.5K", height: 48 },
+      { label: "Jul", value: "$8.3K", height: 70 },
+      { label: "Aug", value: "$7.6K", height: 62 },
+      { label: "Sep", value: "$9.8K", height: 85 }
+    ],
+    "Last 12 Months": [
+      { label: "Oct", value: "$5.1K", height: 42 },
+      { label: "Nov", value: "$6.3K", height: 51 },
+      { label: "Dec", value: "$8.9K", height: 72 },
+      { label: "Jan", value: "$5.8K", height: 47 },
+      { label: "Feb", value: "$4.9K", height: 40 },
+      { label: "Mar", value: "$6.7K", height: 55 },
+      { label: "Apr", value: "$4.2K", height: 40 },
+      { label: "May", value: "$6.8K", height: 55 },
+      { label: "Jun", value: "$5.5K", height: 48 },
+      { label: "Jul", value: "$8.3K", height: 70 },
+      { label: "Aug", value: "$7.6K", height: 62 },
+      { label: "Sep", value: "$9.8K", height: 85 }
+    ],
+    "All Time": [
+      { label: "2022", value: "$52K", height: 45 },
+      { label: "2023", value: "$71K", height: 60 },
+      { label: "2024", value: "$95K", height: 75 },
+      { label: "2025", value: "$128K", height: 100 },
+      { label: "2026", value: "$148K", height: 88 }
+    ]
+  };
+
+  function renderRevenueChart(period, container) {
+    if (!container) return;
+    const data = PERIOD_CHART_DATA[period];
+    if (!data) return;
+    container.innerHTML = "";
+    data.forEach(function (item) {
+      const col = document.createElement("div");
+      col.className = "chart-bar-col";
+      const bar = document.createElement("div");
+      bar.className = "bar";
+      bar.dataset.height = item.height;
+      const val = document.createElement("span");
+      val.className = "bar-value";
+      val.textContent = item.value;
+      bar.appendChild(val);
+      const label = document.createElement("span");
+      label.className = "bar-label";
+      label.textContent = item.label;
+      col.appendChild(bar);
+      col.appendChild(label);
+      container.appendChild(col);
+    });
+    container.querySelectorAll(".bar").forEach(function (bar, i) {
+      setTimeout(function () {
+        bar.style.height = bar.dataset.height + "%";
+      }, i * 80);
+    });
+  }
+
+  document.querySelectorAll(".period-dropdown").forEach(function (dd) {
+    const btn = dd.querySelector(".period-btn");
+    const menu = dd.querySelector(".period-menu");
+    if (!btn || !menu) return;
+    const chartEl = document.querySelector(dd.dataset.chartTarget || "#revenueChartBars");
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      menu.classList.toggle("show");
+      btn.classList.toggle("open");
+    });
+
+    menu.querySelectorAll("button").forEach(function (item) {
+      item.addEventListener("click", function () {
+        menu.querySelectorAll("button").forEach(function (b) {
+          b.classList.remove("active");
+        });
+        item.classList.add("active");
+        const period = item.textContent;
+        btn.innerHTML = period + ' <i class="fas fa-chevron-down"></i>';
+        menu.classList.remove("show");
+        btn.classList.remove("open");
+        renderRevenueChart(period, chartEl);
+      });
+    });
+  });
+
+  document.querySelectorAll(".period-dropdown").forEach(function (dd) {
+    const activeItem = dd.querySelector(".period-menu button.active");
+    const chartEl = document.querySelector(dd.dataset.chartTarget || "#revenueChartBars");
+    if (activeItem) renderRevenueChart(activeItem.textContent, chartEl);
+  });
+
+  document.addEventListener("click", function (e) {
+    document.querySelectorAll(".period-dropdown").forEach(function (dd) {
+      if (!dd.contains(e.target)) {
+        const menu = dd.querySelector(".period-menu");
+        const btn = dd.querySelector(".period-btn");
+        if (menu) menu.classList.remove("show");
+        if (btn) btn.classList.remove("open");
+      }
+    });
+  });
+
+  // ===== Table filter dropdown (Filter button) =====
+  document.querySelectorAll(".filter-dropdown").forEach(function (fd) {
+    const btn = fd.querySelector(".filter-btn");
+    const menu = fd.querySelector(".filter-menu");
+    if (!btn || !menu) return;
+
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      menu.classList.toggle("show");
+      btn.classList.toggle("open");
+    });
+
+    menu.querySelectorAll("button").forEach(function (item) {
+      item.addEventListener("click", function () {
+        menu.querySelectorAll("button").forEach(function (b) {
+          b.classList.remove("active");
+        });
+        item.classList.add("active");
+        btn.innerHTML = item.textContent + ' <i class="fas fa-chevron-down"></i>';
+        menu.classList.remove("show");
+        btn.classList.remove("open");
+        applyFilters();
+      });
+    });
+  });
+
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".filter-dropdown")) return;
+    document.querySelectorAll(".filter-dropdown").forEach(function (fd) {
+      const menu = fd.querySelector(".filter-menu");
+      const btn = fd.querySelector(".filter-btn");
+      if (menu) menu.classList.remove("show");
+      if (btn) btn.classList.remove("open");
+    });
+  });
+
+  applyFilters();
 
   // Support ticket (support.html)
   const submitTicketBtn = document.getElementById("submitTicketBtn");

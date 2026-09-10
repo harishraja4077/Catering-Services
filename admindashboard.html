@@ -21,7 +21,7 @@
     <!-- ===== Sidebar (Admin) ===== -->
     <aside class="dash-sidebar">
       <div class="sidebar-brand">
-        <a href="index.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
+        <a href="admindashboard.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
       </div>
 
       <nav class="sidebar-nav">
@@ -66,7 +66,7 @@
           <button class="sidebar-toggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
           <div class="dash-greeting">
             <h1>Admin Overview</h1>
-            <p>Tuesday, September 8, 2026 Â· Monitor your catering business.</p>
+            <p>Tuesday, September 8, 2026 · Monitor your catering business.</p>
           </div>
         </div>
         <div class="dash-actions">
@@ -132,9 +132,19 @@
         <div class="dash-card">
           <div class="card-header">
             <h3>Monthly Revenue</h3>
-            <button class="card-link">Last 6 Months <i class="fas fa-chevron-down"></i></button>
+            <div class="period-dropdown" data-chart-target="#revenueChartBars">
+              <button class="card-link period-btn">Last 6 Months <i class="fas fa-chevron-down"></i></button>
+              <div class="period-menu">
+                <button type="button" data-period="Last 7 Days">Last 7 Days</button>
+                <button type="button" data-period="Last 30 Days">Last 30 Days</button>
+                <button type="button" data-period="Last 3 Months">Last 3 Months</button>
+                <button type="button" data-period="Last 6 Months" class="active">Last 6 Months</button>
+                <button type="button" data-period="Last 12 Months">Last 12 Months</button>
+                <button type="button" data-period="All Time">All Time</button>
+              </div>
+            </div>
           </div>
-          <div class="chart-bars">
+          <div class="chart-bars" id="revenueChartBars">
             <div class="chart-bar-col">
               <div class="bar" data-height="40">
                 <span class="bar-value">$4.2K</span>
@@ -307,7 +317,7 @@
             <div class="activity-item">
               <span class="activity-dot green"></span>
               <div>
-                <div class="activity-content"><strong>Payment confirmed</strong> for James Davis â€” $3,600.</div>
+                <div class="activity-content"><strong>Payment confirmed</strong> for James Davis — $3,600.</div>
                 <div class="activity-time">1 hour ago</div>
               </div>
             </div>

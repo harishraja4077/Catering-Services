@@ -19,7 +19,7 @@
 
     <aside class="dash-sidebar">
       <div class="sidebar-brand">
-        <a href="index.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
+        <a href="admindashboard.html"><img src="Assets/logo.webp" alt="Stackly" class="brand-logo-img"></a>
       </div>
 
       <nav class="sidebar-nav">
@@ -108,35 +108,43 @@
       <div class="dash-card">
         <div class="card-header">
           <h3>Support Tickets</h3>
-          <button class="card-link">Filter <i class="fas fa-chevron-down"></i></button>
+          <div class="filter-dropdown" data-filter-target="#supportTicketsList" data-filter-item=".activity-item">
+            <button class="card-link filter-btn">Filter <i class="fas fa-chevron-down"></i></button>
+            <div class="filter-menu">
+              <button type="button" class="active">All Tickets</button>
+              <button type="button" data-filter-key="status" data-filter-value="Awaiting reply">Awaiting reply</button>
+              <button type="button" data-filter-key="status" data-filter-value="In progress">In progress</button>
+              <button type="button" data-filter-key="status" data-filter-value="Resolved">Resolved</button>
+            </div>
+          </div>
         </div>
-        <div class="activity-list">
-          <div class="activity-item">
+        <div class="activity-list" id="supportTicketsList">
+          <div class="activity-item" data-status="Awaiting reply">
             <span class="activity-dot red"></span>
             <div>
-              <div class="activity-content"><strong>#TKT-3022</strong> Â· Emily Parker â€” <strong>Invoice question</strong></div>
-              <div class="activity-time">Awaiting reply Â· 2h ago</div>
+              <div class="activity-content"><strong>#TKT-3022</strong> · Emily Parker — <strong>Invoice question</strong></div>
+              <div class="activity-time">Awaiting reply · 2h ago</div>
             </div>
           </div>
-          <div class="activity-item">
+          <div class="activity-item" data-status="In progress">
             <span class="activity-dot gold"></span>
             <div>
-              <div class="activity-content"><strong>#TKT-3018</strong> Â· John Smith â€” <strong>Add extra guests</strong></div>
-              <div class="activity-time">In progress Â· 5h ago</div>
+              <div class="activity-content"><strong>#TKT-3018</strong> · John Smith — <strong>Add extra guests</strong></div>
+              <div class="activity-time">In progress · 5h ago</div>
             </div>
           </div>
-          <div class="activity-item">
+          <div class="activity-item" data-status="In progress">
             <span class="activity-dot blue"></span>
             <div>
-              <div class="activity-content"><strong>#TKT-3015</strong> Â· Michael Kim â€” <strong>Menu customization</strong></div>
-              <div class="activity-time">In progress Â· 1d ago</div>
+              <div class="activity-content"><strong>#TKT-3015</strong> · Michael Kim — <strong>Menu customization</strong></div>
+              <div class="activity-time">In progress · 1d ago</div>
             </div>
           </div>
-          <div class="activity-item">
+          <div class="activity-item" data-status="Resolved">
             <span class="activity-dot green"></span>
             <div>
-              <div class="activity-content"><strong>#TKT-3012</strong> Â· John Smith â€” <strong>Menu change request</strong></div>
-              <div class="activity-time">Resolved Â· 2d ago</div>
+              <div class="activity-content"><strong>#TKT-3012</strong> · John Smith — <strong>Menu change request</strong></div>
+              <div class="activity-time">Resolved · 2d ago</div>
             </div>
           </div>
         </div>

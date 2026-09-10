@@ -518,6 +518,124 @@ img { max-width: 100%; display: block; }
   color: var(--primary);
 }
 
+/* ===== Period dropdown (e.g. "Last 6 Months") ===== */
+.period-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.period-btn.open i {
+  transform: rotate(180deg);
+}
+
+.period-btn i {
+  transition: var(--transition);
+}
+
+.period-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 10.5rem;
+  background: var(--light, #ffffff);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 0.35rem;
+  display: none;
+  z-index: 20;
+}
+
+.period-menu.show {
+  display: block;
+}
+
+.period-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--dark);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.period-menu button:hover {
+  background: var(--primary-light, #f3efe8);
+  color: var(--primary-dark);
+}
+
+.period-menu button.active {
+  background: var(--primary-dark);
+  color: var(--light);
+}
+
+/* ===== Filter dropdown (Filter button) ===== */
+.filter-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filter-btn.open i,
+.filter-btn i {
+  transition: var(--transition);
+}
+
+.filter-btn.open i {
+  transform: rotate(180deg);
+}
+
+.filter-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 10.5rem;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 0.35rem;
+  display: none;
+  z-index: 20;
+  text-align: left;
+}
+
+.filter-menu.show {
+  display: block;
+}
+
+.filter-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 0.8rem;
+  background: none;
+  border: none;
+  border-radius: 7px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--dark);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-menu button:hover {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.filter-menu button.active {
+  background: var(--primary-dark);
+  color: var(--light);
+}
+
 /* ===== Upcoming events ===== */
 .event-list {
   display: flex;
