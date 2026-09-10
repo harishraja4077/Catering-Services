@@ -227,6 +227,25 @@ document.addEventListener("DOMContentLoaded", function () {
       const pretty = first.charAt(0).toUpperCase() + first.slice(1);
       greet.textContent = greet.textContent.replace(/John/, pretty);
     }
+
+    const profileName = email
+      .replace(/@.*$/, "")
+      .split(/[\s._-]+/)
+      .filter(Boolean)
+      .map(function (p) { return p.charAt(0).toUpperCase() + p.slice(1); })
+      .join(" ") || email;
+
+    const profileHeading = document.querySelector(".profile-card h3");
+    if (profileHeading) profileHeading.textContent = profileName;
+
+    const profileAvatar = document.querySelector(".profile-avatar-lg");
+    if (profileAvatar) profileAvatar.textContent = initials;
+
+    const nameInput = document.getElementById("editProfileName");
+    if (nameInput) nameInput.value = profileName;
+
+    const emailInput = document.getElementById("editProfileEmail");
+    if (emailInput) emailInput.value = email;
   }
 
   // ===== Dashboard form validation -> redirect to 404 on valid submit =====
