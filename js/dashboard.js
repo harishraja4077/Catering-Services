@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".action-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
       const action = (this.getAttribute("title") || "").toLowerCase();
-      if (action === "view" || action === "edit") {
+      if (action === "view" || action === "edit" || action === "download") {
         window.location.href = "404.html";
         return;
       }
