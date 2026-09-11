@@ -901,6 +901,15 @@ p { color: #555; }
   color: var(--light);
   font-weight: 700;
   font-size: 1.3rem;
+  overflow: hidden;
+}
+
+.testimonial-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }
 
 .testimonial-author-info {
@@ -2384,6 +2393,11 @@ textarea.form-control {
 
   .navbar.scrolled .mobile-toggler.active span {
     background: var(--light);
+  }
+
+  body.menu-open .nav-brand {
+    position: relative;
+    z-index: 1003;
   }
   
   .hero h1 {

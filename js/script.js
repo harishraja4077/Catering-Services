@@ -29,17 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggler = document.querySelector(".mobile-toggler");
   const navLinks = document.querySelector(".nav-links");
 
-  if (toggler && navLinks) {
+if (toggler && navLinks) {
     toggler.addEventListener("click", function () {
       this.classList.toggle("active");
-      navLinks.classList.toggle("open");
-      document.body.style.overflow = navLinks.classList.contains("open") ? "hidden" : "";
+      const isOpen = navLinks.classList.toggle("open");
+      document.body.classList.toggle("menu-open", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     });
 
     navLinks.querySelectorAll("a").forEach(function (link) {
       link.addEventListener("click", function () {
         toggler.classList.remove("active");
         navLinks.classList.remove("open");
+        document.body.classList.remove("menu-open");
         document.body.style.overflow = "";
       });
     });
@@ -148,6 +150,53 @@ document.addEventListener("DOMContentLoaded", function () {
       );
       observer.observe(statsSection);
     }
+  }
+
+  // ===== Badge & mini-stat counting animation =====
+  const countEls = document.querySelectorAll(".num[data-count], .mini-num[data-count]");
+
+  if (countEls.length > 0 && "IntersectionObserver" in window) {
+    const formatCount = function (value, comma) {
+      return comma ? value.toLocaleString("en-US") : String(value);
+    };
+
+    const runCount = function (el) {
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.countSuffix || "";
+      const comma = el.dataset.comma === "true";
+      const duration = 1600;
+      const start = performance.now();
+
+      function step(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = formatCount(current, comma) + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = formatCount(target, comma) + suffix;
+        }
+      }
+
+      requestAnimationFrame(step);
+    };
+
+    const countObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCount(entry.target);
+            countObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    countEls.forEach(function (el) {
+      countObserver.observe(el);
+    });
   }
 
   // ===== FAQ accordion =====
